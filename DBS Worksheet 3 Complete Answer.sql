@@ -33,7 +33,17 @@ CREATE TYPE investment_type AS OBJECT
     quantity NUMBER(6)
 )
 
--- CREATING THE OBJECT FOR THE CLIENTS. 
+-- CREATE THE NESTED TABLE FOR THE INVESTMENTS (DIFFERNET THAN CREATING A TABLE)
+CREATE TYPE investment_nestedtbl_type AS TABLE OF investment_type
+/
+
+-- CREATING THE OBJECT FOR THE CLIENTS. (REFER TO THE NESTED TABLE CREATED ABOVE)
+CREATE TYPE client_type AS OBJECT 
+(
+    name VARCHAR (40),
+    address adress_type,
+    investment investment_nestedtbl_type
+)
 
 
 -- CREATING THE TABLE FOR THE STOCK TABLE.
