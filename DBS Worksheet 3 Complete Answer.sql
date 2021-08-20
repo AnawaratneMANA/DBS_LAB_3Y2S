@@ -79,3 +79,8 @@ INSERT INTO clients VALUES
 (client_type('John Smith', address_type('3', 'East Av', 'Bentley', 'WA', '6102'),
 investment_nestedtbl_type(investment_type('BHP', 12.00, '02-10-01', 1000)))
 )
+/
+
+-- AFTER EXECUTING THE QUERIES WE HAVE TO RUN COMMIT TO SAVE THE CHANGERS.
+COMMIT
+/
