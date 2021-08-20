@@ -11,4 +11,21 @@ CREATE TYPE stock_type AS OBJECT
     exchanges exchanges_varray,
     lastDivident NUMBER (4,2),
     eps NUMBER (4,2)
+) 
+
+-- CREATING A ADDRESS TYPE OBJECT 
+CREATE TYPE address_type AS OBJECT 
+(
+    streeNo char (10),
+    streetName char (15),
+    subrub char(20),
+    state char(15),
+    pin char(10)
+
 )
+
+-- CREATING THE OBJECT FOR THE CLIENTS. 
+
+
+-- CREATING THE TABLE FOR THE STOCK TABLE.
+CREATE TABLE 
