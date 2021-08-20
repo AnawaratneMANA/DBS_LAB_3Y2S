@@ -24,6 +24,15 @@ CREATE TYPE address_type AS OBJECT
 
 )
 
+-- CREATING OBJECT FOR RECORD INVESTMENT DETAILS
+CREATE TYPE investment_type AS OBJECT 
+(
+    company REF stock_type,
+    purchasePrice NUMBER (6,2),
+    purchaseDate DATE,
+    quantity NUMBER(6)
+)
+
 -- CREATING THE OBJECT FOR THE CLIENTS. 
 
 
