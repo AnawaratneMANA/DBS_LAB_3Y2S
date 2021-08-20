@@ -47,4 +47,7 @@ CREATE TYPE client_type AS OBJECT
 
 
 -- CREATING THE TABLE FOR THE STOCK TABLE.
-CREATE TABLE 
+CREATE TABLE stock of stock_type 
+(
+    CONSTRAINT stock_pk PRIMARY KEY (companyName)
+)
