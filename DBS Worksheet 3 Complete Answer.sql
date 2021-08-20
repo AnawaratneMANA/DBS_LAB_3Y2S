@@ -68,3 +68,8 @@ CREATE TABLE client of client_type
 ALTER TABLE investment_tab
 ADD SCOPE FOR (companyName) IS stock
 /
+
+-- INSERTING DATA TO THE STOCK TABLE.
+INSERT INTO stock VALUES 
+(stock_type('BHP', 10.50, exchanges_varray(Sydney, NewYork), 1.50, 3.20))
+/
