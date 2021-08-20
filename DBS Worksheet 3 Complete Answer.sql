@@ -11,7 +11,8 @@ CREATE TYPE stock_type AS OBJECT
     exchanges exchanges_varray,
     lastDivident NUMBER (4,2),
     eps NUMBER (4,2)
-) 
+)
+/
 
 -- CREATING A ADDRESS TYPE OBJECT 
 CREATE TYPE address_type AS OBJECT 
@@ -23,6 +24,7 @@ CREATE TYPE address_type AS OBJECT
     pin char(10)
 
 )
+/
 
 -- CREATING OBJECT FOR RECORD INVESTMENT DETAILS
 CREATE TYPE investment_type AS OBJECT 
@@ -32,6 +34,7 @@ CREATE TYPE investment_type AS OBJECT
     purchaseDate DATE,
     quantity NUMBER(6)
 )
+/
 
 -- CREATE THE NESTED TABLE FOR THE INVESTMENTS (DIFFERNET THAN CREATING A TABLE)
 CREATE TYPE investment_nestedtbl_type AS TABLE OF investment_type
@@ -44,6 +47,7 @@ CREATE TYPE client_type AS OBJECT
     address adress_type,
     investment investment_nestedtbl_type
 )
+/
 
 
 -- CREATING THE TABLE FOR THE STOCK TABLE.
@@ -51,3 +55,16 @@ CREATE TABLE stock of stock_type
 (
     CONSTRAINT stock_pk PRIMARY KEY (companyName)
 )
+/
+
+-- CREATING THE CLIENT TABLE (FOREIGN KEY IS IN THE INVESTMENT TABLE NOT IN THE CLIENT TABLE)
+CREATE TABLE client of client_type 
+(
+    CONSTRAINT client_pk PRIMARY KEY(name)
+) NESTED TABLE investment STORE AS investment_tab
+/
+
+-- ALTERING THE INVESTMENT TABLE
+ALTER TABLE investment_tab
+ADD SCOPE FOR (companyName) IS stock
+/
