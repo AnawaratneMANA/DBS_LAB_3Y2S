@@ -107,6 +107,12 @@ COMMIT
 /**
 Keyword for brake the nesting in tables "table"
 **/
+
+-- Part A
 SELECT c.name, i.company.companyName, i.company.currentPrice, i.company.lastDivident, i.company.eps
 FROM clients c, table(c.investment) i
 
+-- Part B
+SELECT c.name, i.company.companyName, SUM(i.quantity) AS total_qty, SUM(i.quantity*i.purchasePrice)/ SUM(i.quantity) AS APP
+FROM client c, table(c.investment) i
+GROUP BY c.name, i.company.companyName
