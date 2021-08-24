@@ -125,3 +125,7 @@ SELECT c.name, i.company.companyName, SUM(i.quantity) AS total_qty , SUM(i.quant
 FROM client c, table(c.investment) i, table(i.company.exchanges) e
 WHERE e.column_value = "New York"
 GROUP BY c.name, i.company.companyName
+
+/**
+Do the next two questions as an assignment.
+**/
