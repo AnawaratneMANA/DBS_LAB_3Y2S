@@ -107,6 +107,6 @@ COMMIT
 /**
 Keyword for brake the nesting in tables "table"
 **/
-SELECT c.name
+SELECT c.name, i.company.companyName, i.company.currentPrice, i.company.lastDivident, i.company.eps
 FROM clients c, table(c.investment) i
 
