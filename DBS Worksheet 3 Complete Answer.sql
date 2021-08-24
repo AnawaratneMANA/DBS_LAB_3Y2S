@@ -89,7 +89,9 @@ INSERT INTO stock VALUES
 (stock_type('IBM', 70.00, exchanges_varray('NewYork','London','Tokyo'), 4.25, 10.25))/
 
 
-
+/**
+    IMP#2: We have to insert data into the nested table object first.
+**/
 -- INSERT DATA INTO THE CLIENT TABLE
 INSERT INTO clients VALUES 
 (client_type('John Smith', address_type('3', 'East Av', 'Bentley', 'WA', '6102'),
@@ -100,4 +102,11 @@ investment_nestedtbl_type(investment_type('BHP', 12.00, '02-10-01', 1000)))
 -- AFTER EXECUTING THE QUERIES WE HAVE TO RUN COMMIT TO SAVE THE CHANGERS.
 COMMIT
 /
+
+-- SELECT QUERIES
+/**
+Keyword for brake the nesting in tables "table"
+**/
+SELECT c.name
+FROM clients c, table(c.investment) i
 
