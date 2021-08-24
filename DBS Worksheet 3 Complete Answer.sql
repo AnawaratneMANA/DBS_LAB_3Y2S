@@ -73,6 +73,22 @@ ADD SCOPE FOR (companyName) IS stock
 INSERT INTO stock VALUES 
 (stock_type('BHP', 10.50, exchanges_varray('Sydney', 'NewYork'), 1.50, 3.20))
 /
+INSERT INTO stock VALUES 
+(stock_type('GM', 50.00, exchanges_varray('NewYork'), 2.50, 9.30))
+/
+INSERT INTO stock VALUES 
+(stock_type('INFORSYS', 45.00, exchanges_varray('NewYork'), 3.00, 7.80))/
+
+INSERT INTO stock VALUES 
+(stock_type('FORD', 40.00, exchanges_varray('NewYork'), 2.00, 8.50))/
+
+INSERT INTO stock VALUES 
+(stock_type('INTEL', 76.50, exchanges_varray('NewYork','London'), 5.00, 12.40))/
+
+INSERT INTO stock VALUES 
+(stock_type('IBM', 70.00, exchanges_varray('NewYork','London','Tokyo'), 4.25, 10.25))/
+
+
 
 -- INSERT DATA INTO THE CLIENT TABLE
 INSERT INTO clients VALUES 
@@ -84,3 +100,4 @@ investment_nestedtbl_type(investment_type('BHP', 12.00, '02-10-01', 1000)))
 -- AFTER EXECUTING THE QUERIES WE HAVE TO RUN COMMIT TO SAVE THE CHANGERS.
 COMMIT
 /
+
