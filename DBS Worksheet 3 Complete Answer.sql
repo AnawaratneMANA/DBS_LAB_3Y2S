@@ -116,3 +116,12 @@ FROM clients c, table(c.investment) i
 SELECT c.name, i.company.companyName, SUM(i.quantity) AS total_qty, SUM(i.quantity*i.purchasePrice)/ SUM(i.quantity) AS APP
 FROM client c, table(c.investment) i
 GROUP BY c.name, i.company.companyName
+
+/**
+Nesting into multiple level in the table.
+**/
+-- Part C
+SELECT c.name, i.company.companyName, SUM(i.quantity) AS total_qty , SUM(i.quantity*i.currentPrice) AS current_value
+FROM client c, table(c.investment) i, table(i.company.exchanges) e
+WHERE e.column_value = "New York"
+GROUP BY c.name, i.company.companyName
