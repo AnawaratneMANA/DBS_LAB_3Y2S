@@ -62,4 +62,12 @@ CREATE TABLE client of client_type
 ) NESTED TABLE investment STORE AS investment_tab
 /
 
+-- ADDING SCOPE TO THE INVESTMENT TABLE (NESTED TABLE)
+/**
+Purpose of adding this is to point the REF to a specific value 
+than pointing it to a object based on the table. 
+**/
+ALTER TABLE investment_tab
+ADD SCOPE FOR (companyName) IS stock
+/
 
