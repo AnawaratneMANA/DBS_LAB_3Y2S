@@ -110,6 +110,23 @@ CREATE TYPE BeerType AS OBJECT (
 CREATE TYPE BeerTableType AS 
 	TABLE OF BeerType
 /
+CREATE TABLE Manfs (
+			name CHAR(30),
+			addr	CHAR(50),
+			beers beerTableType)
+	NESTED TABLE beers STORE AS beer_table;
+
+-- INSERTING VALUES INTO THE NESTED TABLE AND FETCHING.
+INSERT INTO employees VALUES(1000, proj_list(
+    proj_t(101, 'Avionics'), 
+    proj_t(102, 'Cruise control')
+));
+
+SELECT * 
+	FROM TABLE(SELECT t.projects FROM employees t 
+	WHERE t.eno = 1000);
+
+
 
 
 
