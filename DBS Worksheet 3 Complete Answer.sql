@@ -129,3 +129,8 @@ GROUP BY c.name, i.company.companyName
 /**
 Do the next two questions as an assignment.
 **/
+
+-- Part D
+SELECT c.name, SUM(i.quantity*i.purchasePrice) AS total_price
+FROM client c, table(c.investments) i
+GROUP BY c.name
