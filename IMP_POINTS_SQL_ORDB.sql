@@ -98,5 +98,18 @@ CREATE TABLE pricelist (
 INSERT INTO pricelist 
 	VALUES(1, price_arr(2.50,3.75,4.25));
 
+SELECT pno, s.COLUMN_VALUE price
+	FROM pricelist p, TABLE(p.prices) s;
+
+-- NESTED TABLES DETAILED BRAKE DOWN.
+CREATE TYPE BeerType AS OBJECT (
+	name	CHAR(20),
+	kind	CHAR(10),
+	colour CHAR(10))
+/
+CREATE TYPE BeerTableType AS 
+	TABLE OF BeerType
+/
+
 
 
