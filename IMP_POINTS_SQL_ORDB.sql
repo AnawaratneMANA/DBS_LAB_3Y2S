@@ -131,6 +131,39 @@ SELECT *
 	FROM TABLE(SELECT t.projects FROM employees t 
 	WHERE t.eno = 1000);
 
+-- ACCESSING THE NESTED TABLE WITH THE PARENT TABLE. 
+SELECT e.eno, p.* 
+FROM employees e, TABLE (e.projects) p;
+
+-- UPDATE VALUES IN NESTED TABLE (UPDATE, INSERT, DELETE)
+INSERT INTO TABLE(SELECT e.projects 
+				     FROM employees e 
+				     WHERE e.eno = 1000) 
+   VALUES (103, 'Project Neptune');
+
+UPDATE TABLE(SELECT e.projects 
+			         FROM employees e 
+				     WHERE e.eno = 1000) p 
+   SET p.projname = 'Project Pluto' 
+   WHERE p.projno = 103;
+
+DELETE TABLE(SELECT e.projects 
+			         FROM employees e 
+				     WHERE e.eno = 1000) p
+   WHERE p.projno = 103; 
+
+-- DROP A NESTED TABLE COLUMN
+UPDATE employees e
+	SET e.projects = NULL 
+	WHERE e.eno = 1000; 
+
+-- ADD BACK A NESTED TABLE COLUMN.
+UPDATE employees e
+	SET e.projects = proj_list(proj_t(103, 'Project Pluto'))
+	WHERE e.eno=1000;
+
+
+
 
 
 
