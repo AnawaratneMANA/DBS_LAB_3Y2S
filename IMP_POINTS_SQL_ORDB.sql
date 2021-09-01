@@ -71,3 +71,9 @@ ALTER TABLE investment_tab
 ADD SCOPE FOR (companyName) IS stock
 /
 
+-- ACCESSING DATA IN THE REF TABLES. 
+SELECT s.beer.name 
+	FROM Sells s 
+	WHERE s.bar.name = 'Joe''s Bar'; 
+
+
