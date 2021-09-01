@@ -1,0 +1,14 @@
+-- CREATE A TABLE WITH REF
+CREATE TYPE MenuType2 AS OBJECT (
+	bar		REF BarType,
+	beer		REF BeerType,
+	price	FLOAT)
+/
+-- CREATE A TABLE WITH THE OBJECT TYPE
+CREATE TABLE Sells OF MenuType2;
+
+-- INSERT VALUES INTO THE TABLE CREATED WIHT MenuType2
+INSERT INTO sells VALUES(
+	(SELECT REF(b) FROM bars b WHERE name='Jim''s'),
+	(SELECT REF(e) FROM beers e WHERE name='Swan'),
+	2.40);
