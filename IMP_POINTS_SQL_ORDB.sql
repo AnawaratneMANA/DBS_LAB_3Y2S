@@ -122,6 +122,11 @@ INSERT INTO employees VALUES(1000, proj_list(
     proj_t(102, 'Cruise control')
 ));
 
+-- THIS IS IF GETTING DATA ENTIRELY FROM THE NESTED TABLE.
+/**
+If we want to get data from the parent or outer table, Then we have to 
+use the table() function to communicate with the nested table or varray. 
+**/
 SELECT * 
 	FROM TABLE(SELECT t.projects FROM employees t 
 	WHERE t.eno = 1000);
