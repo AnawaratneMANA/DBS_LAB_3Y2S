@@ -76,4 +76,27 @@ SELECT s.beer.name
 	FROM Sells s 
 	WHERE s.bar.name = 'Joe''s Bar'; 
 
+-- GETTING VALUES FROM A QUERY.
+SELECT pno, s.COLUMN_VALUE price
+	FROM pricelist p, TABLE(p.prices) s;
+
+-- HOW TO USE REF COLOUMN WHEN SEARCHING.
+SELECT b.name
+FROM TABLE( SELECT beers
+			   FROM Manfs
+			   WHERE name = ’Anheuser-Busch’) b
+WHERE b.kind = ’ale’;
+
+-- WORKING WITH VARRAYS. CREATING, INSERTING, FETCHING
+CREATE TYPE price_arr AS 
+	VARRAY(10) OF NUMBER(12,2)
+/
+CREATE TABLE pricelist (
+	pno integer, 
+	prices price_arr);
+
+INSERT INTO pricelist 
+	VALUES(1, price_arr(2.50,3.75,4.25));
+
+
 
