@@ -241,6 +241,47 @@ CREATE TYPE BODY Customer_typ AS
 	END; 
 / 
 
+-- CREATE INHERITANCE RELATIONSHIPS IN ORACLE
+CREATE TYPE Person_type AS OBJECT
+	( pid NUMBER,
+ 	  name VARCHAR2(30),
+ 	  address VARCHAR2(100) )   NOT FINAL;
+
+-- NOT FINAL SHOULD BE THERE TO CREATE SUB TYPES
+-- THIS CAN BE ALTERED AS WELL AFTER CREATING.
+ALTER TYPE Person_type FINAL;
+
+-- CREATE SUBTYPES 
+CREATE TYPE Student_type UNDER Person_type 
+	  ( deptid NUMBER,
+       major VARCHAR2(30)) NOT FINAL;
+/
+
+-- WHEN INSERTING DATA TO PARENT WE ALSO CAN INSERT DATA TO SUBTYPES AS WELL.
+CREATE TABLE person_tab of person_type
+(pid PRIMARY KEY);
+
+INSERT INTO person_tab VALUES
+	( student_type(4, 'Edward Learn', 
+          '65 Marina Blvd, Ocean Surf, WA, 6725',
+          40, 'CS')
+   );
+
+-- SELECTING INSTANCES. (FROM PARENT TO SUB LEVELS)
+-- ALL
+SELECT VALUE(p) FROM person_tab p; 
+-- SUB LEVEL ONWARDS.
+SELECT VALUE(s) 
+    FROM person_tab s 
+    WHERE VALUE(s) IS OF (Student_type);
+-- ONLY A PARTICULAR LEVEL.
+SELECT VALUE(s) 
+FROM person_tab s 
+WHERE VALUE(s) IS OF (ONLY student_type);
+
+
+
+
 
 
 
