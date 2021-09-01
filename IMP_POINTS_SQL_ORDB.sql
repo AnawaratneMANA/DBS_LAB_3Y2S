@@ -163,6 +163,33 @@ UPDATE employees e
 	WHERE e.eno=1000;
 
 
+-- LECTURE PART II METHODS AND INHERITANCE.
+-- FIRST ADD THE METHOD DECLARATION.
+CREATE TYPE MenuType AS OBJECT ( 
+   bar REF BarType, 
+   beer REF BeerType, 
+   price FLOAT, 
+   MEMBER FUNCTION priceInYen(rate IN FLOAT)
+      RETURN FLOAT
+)
+/
+
+-- DEFINE THE BODY OF THE METHOD.
+CREATE TYPE BODY MenuType AS 
+MEMBER FUNCTION 
+priceInYen(rate FLOAT) 
+RETURN FLOAT IS 
+	BEGIN 
+		RETURN rate * SELF.price; 
+	END; 
+END; 
+/ 
+
+-- CREATE A TABLE ON THE TYPE.
+CREATE TABLE Sells OF MenuType; 
+
+
+
 
 
 
