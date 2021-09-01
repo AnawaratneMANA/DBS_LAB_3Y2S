@@ -134,3 +134,8 @@ Do the next two questions as an assignment.
 SELECT c.name, SUM(i.quantity*i.purchasePrice) AS total_price
 FROM client c, table(c.investments) i
 GROUP BY c.name
+
+-- Part E
+SELECT c.name, SUM(i.quantity(i.company.currentPrice - i.purchasePrice)) AS book_profit
+FROM client c, table(c.investments) i
+GROUP BY c.name
