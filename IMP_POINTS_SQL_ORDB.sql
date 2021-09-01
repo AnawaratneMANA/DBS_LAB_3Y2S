@@ -272,12 +272,23 @@ INSERT INTO person_tab VALUES
 SELECT VALUE(p) FROM person_tab p; 
 -- SUB LEVEL ONWARDS.
 SELECT VALUE(s) 
-    FROM person_tab s 
-    WHERE VALUE(s) IS OF (Student_type);
+FROM person_tab s 
+WHERE VALUE(s) IS OF (Student_type);
 -- ONLY A PARTICULAR LEVEL.
 SELECT VALUE(s) 
 FROM person_tab s 
 WHERE VALUE(s) IS OF (ONLY student_type);
+
+-- ACCESSING SUBLEVEL ATTRIBUTES WITH TREAT() FUNCTION
+SELECT Name, TREAT(VALUE(p) AS PartTimeStudent_type).numhours hours
+FROM person_tab p 
+WHERE VALUE(p) IS OF (ONLY PartTimeStudent_type); 
+
+-- NOT INSTANTIABLE OBJECTS. (SIMILAR TO ABSTRACT CLASSES)
+CREATE TYPE Address_typ AS OBJECT(...) NOT INSTANTIABLE NOT FINAL;* 
+CREATE TYPE AusAddress_typ UNDER Address_typ(...); 
+CREATE TYPE IntlAddress_typ UNDER Address_typ(...); 
+
 
 
 
