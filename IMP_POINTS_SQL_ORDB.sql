@@ -222,6 +222,27 @@ CREATE TYPE BODY Rectangle_type AS MAP MEMBER FUNCTION area RETURN NUMBER IS
    END area; 
 END;
 
+-- ORDER METHODS FOR DIRECT OBJECT TO OBEJCT COMPARISON WITH MINIMAL COMPLEXITY
+CREATE TYPE Customer_typ AS OBJECT 
+	( id NUMBER, 
+	  name VARCHAR2(20), 
+	  addr VARCHAR2(30), 
+	  ORDER MEMBER FUNCTION match (c Customer_typ) RETURN INTEGER ); 
+	/ 
+
+-- DECLARATION
+CREATE TYPE BODY Customer_typ AS 
+	ORDER MEMBER FUNCTION match (c Customer_typ) RETURN INTEGER IS
+	BEGIN 
+		IF id < c.id THEN RETURN -1; -- any num <0 
+		ELSIF id > c.id THEN RETURN 1; -- any num >0 	ELSE RETURN 0; 
+		END IF; 
+	END; 
+	END; 
+/ 
+
+
+
 
 
 
