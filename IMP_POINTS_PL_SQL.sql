@@ -142,3 +142,18 @@ BEGIN
     EXIT;
     END LOOP;
 END;
+
+/* Basic Simple Loop*/
+DECLARE
+    x number :=10;
+BEGIN
+    LOOP
+        DBMS_OUTPUT_PUT_LINE(x);
+        x = x+10;
+        EXIT WHEN x > 50;
+    END LOOP;
+    DBMS_OUTPUT_PUT_LINE("After Exit");
+END;
+/
+
+
