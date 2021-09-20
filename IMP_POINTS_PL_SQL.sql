@@ -131,3 +131,14 @@ BEGIN
 END;
 /
 
+/* Loops | Iterations in PL SQL */
+/* Basic Simple Loop*/
+DECLARE 
+    i Integer := 1;
+BEGIN
+    LOOP
+    DBMS_OUTPUT_PUT_LINE(i);
+    i = i +1;
+    EXIT;
+    END LOOP;
+END;
