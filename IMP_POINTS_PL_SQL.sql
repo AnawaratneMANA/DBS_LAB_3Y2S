@@ -156,4 +156,14 @@ BEGIN
 END;
 /
 
+/* Basic while Loop*/
+DECLARE
+    a number(2) := 10;
+BEGIN
+    WHILE a<20 LOOP
+    DBMS_OUTPUT_PUT_LINE('Value of a is ' || a);
+    a = a + 1;
+    END LOOP;
+END;
+
 
