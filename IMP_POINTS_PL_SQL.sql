@@ -166,4 +166,13 @@ BEGIN
     END LOOP;
 END;
 
+/* For Loop example in PL SQL */
+DECLARE
+    a number(2);
+BEGIN
+    FOR a in 10 .. 20 LOOP
+    DBMS_OUTPUT_PUT_LINE('Value of a is ' || a);
+    END LOOP;
+END;
+/
 
