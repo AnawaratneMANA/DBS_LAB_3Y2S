@@ -62,3 +62,21 @@ BEGIN
     DBMS_OUTPUT_PUT_LINE('Customer '||c_name||' from ' || ' earns ' || c_sal);
 END;
 /
+
+/* Local and Global Variables */
+/*
+    Inner variables can't be used in outside scopes, Outside scoped
+    variables can be used in inner scopes.
+*/
+DECLARE
+    var_number_1 number;
+BEGIN   
+    DECLARE 
+        var_number_2 number;
+    BEGIN
+        var_number_1 = var_number_2 + var_number_1;a
+    END;
+END;
+/
+
+
