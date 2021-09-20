@@ -47,3 +47,18 @@ BEGIN
 END;
 /
 
+/* Query data injetion to Multiple Variables */
+DECLARE
+    c_id Customers.id%type :- 1;
+    c_name Customers.name%type;
+    c_addr Customers.address%type;
+    c_sal Customer.salary%type;
+BEGIN
+    SELECT name, address, salary INTO c_name, c_address, c_sal
+    FROM Customers
+    WHERE id = c_id;
+
+    -- OUTPUT
+    DBMS_OUTPUT_PUT_LINE('Customer '||c_name||' from ' || ' earns ' || c_sal);
+END;
+/
