@@ -49,7 +49,7 @@ END;
 
 /* Query data injetion to Multiple Variables */
 DECLARE
-    c_id Customers.id%type :- 1;
+    c_id Customers.id%type := 1;
     c_name Customers.name%type;
     c_addr Customers.address%type;
     c_sal Customer.salary%type;
