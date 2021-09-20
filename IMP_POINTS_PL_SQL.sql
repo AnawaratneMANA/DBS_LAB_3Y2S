@@ -176,3 +176,13 @@ BEGIN
 END;
 /
 
+/* PL SQL Labels | Similar to giving a name to the loop*/
+DECLARE
+    a number(2);
+BEGIN
+    <<This is a LOOP>> FOR a in 10 .. 20 LOOP
+    DBMS_OUTPUT_PUT_LINE('Value of a is ' || a);
+    END LOOP;
+END;
+/
+
