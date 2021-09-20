@@ -90,10 +90,21 @@ TYPE employee_type IS RECORD
 /* Create a record based on the type defined. */
 employee_rec employee_type;
 
-/* If the row is based on a row of a table - Method 2 */
+/* If the row is based on a column of a table - Method 2 */
+/* This is basically storing the data in vertical manner */
 DECLARE 
 employee_rec employee%ROWTYPE;
 
-
+/* Example usage of ROWTYPE in Oracle DB */
+DECLARE 
+    emp_rec   employees%ROWTYPE;
+    my_empno  employees.employee_id%TYPE := 100;
+BEGIN
+    SELECT * INTO emp_rec FROM employee WHERE employee_id = my_empno;
+    -- Printing the Column values in the ROWTYPE
+     DBMS_OUTPUT_PUT_LINE('Department ID  '|| emp_rec.departmentId);
+     DBMS_OUTPUT_PUT_LINE('Employee Name  '|| emp_rec.name);
+END;
+/
 
 
