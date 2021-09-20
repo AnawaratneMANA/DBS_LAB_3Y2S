@@ -118,4 +118,16 @@ BEGIN
 END;
 /
 
+/* Conditional Statement IF with ELSIF (else if) clause */
+DECLARE
+    a number(2) := 10;
+BEGIN
+    IF (a < 20) THEN
+        DBMS_OUTPUT_PUT_LINE("a is less than 20");
+    ELSE
+        DBMS_OUTPUT_PUT_LINE("a is not less than 20");
+    END IF;
+    DBMS_OUTPUT_PUT_LINE("value of a is " || a);
+END;
+/
 
