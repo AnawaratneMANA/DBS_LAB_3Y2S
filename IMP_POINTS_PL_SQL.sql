@@ -6,7 +6,7 @@ BEGIN
     --Execution section <MANDOTORY>
 EXCEPTION
     --Exception handling seciton
-END
+END;
 
 /* Comments in PL SQL - This is a PL Multiline Comment */
 -- Comments in PL SQL - This is a PL Single Line Comment
@@ -16,3 +16,12 @@ DECLARE
 BEGIN
     DBMS_OUTPUT.PUT_LINE("Printing Message");
 END;
+/
+
+/* Declare a Variable and Print the Value */
+DECLARE 
+    message VARCHAR(50) := 'Printing Message'
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(message);
+END;
+/
