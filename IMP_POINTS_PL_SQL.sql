@@ -152,7 +152,7 @@ BEGIN
         x = x+10;
         EXIT WHEN x > 50;
     END LOOP;
-    DBMS_OUTPUT_PUT_LINE("After Exit");
+    DBMS_OUTPUT_PUT_LINE("After Exit x is " || x);
 END;
 /
 
