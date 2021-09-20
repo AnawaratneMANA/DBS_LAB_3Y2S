@@ -107,4 +107,15 @@ BEGIN
 END;
 /
 
+/* Conditional Statement in PL SQL */
+DECLARE
+A  number(2) := 20;
+BEGIN
+    IF(a < 20) THEN
+         DBMS_OUTPUT_PUT_LINE('a is less than 20');
+    END IF
+    DBMS_OUTPUT_PUT_LINE('Value of a is ' || a);
+END;
+/
+
 
