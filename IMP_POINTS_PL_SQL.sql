@@ -1,5 +1,5 @@
 -- PL SQL IMPORTANT POINTS.
--- PL SQL SYNTAX.
+/* Basic Syntax of PL SQL */
 DECLARE
     -- Variable declaration
 BEGIN
@@ -20,8 +20,30 @@ END;
 
 /* Declare a Variable and Print the Value */
 DECLARE 
-    message VARCHAR(50) := 'Printing Message'
+    message VARCHAR2(50) := 'Printing Message';
 BEGIN
     DBMS_OUTPUT.PUT_LINE(message);
 END;
 /
+
+/* Declare NOT NULL variables */
+DECLARE 
+    message VARCHAR2(50) NOT NULL := 'Printing Message';
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(message);
+END;
+/
+
+/* Query data injetion and String concatenation */
+DECLARE 
+        var_cname varchar(12);
+        var_clno char(3) :='c01';
+BEGIN
+    SELECT c.name INTO var_cname
+    FROM client c
+    WHERE c.clno = var_clno
+
+    DBMS_OUTPUT.PUT_LINE('Name of the client with : ' || var_clno || ' is ' || var_cname);
+END;
+/
+
