@@ -79,4 +79,14 @@ BEGIN
 END;
 /
 
+/* Declare record variables - Method 1 */
+DECLARE 
+TYPE employee_type IS RECORD 
+(
+    employee_id number;
+);
+
+/* Create a record based on the type defined. */
+employee_rec employee_type;
+
 
