@@ -80,6 +80,7 @@ END;
 /
 
 /* Declare record variables - Method 1 */
+/* This is ideal if the row is based on multiple tables */
 DECLARE 
 TYPE employee_type IS RECORD 
 (
@@ -88,5 +89,11 @@ TYPE employee_type IS RECORD
 
 /* Create a record based on the type defined. */
 employee_rec employee_type;
+
+/* If the row is based on a row of a table - Method 2 */
+DECLARE 
+employee_rec employee%ROWTYPE;
+
+
 
 
