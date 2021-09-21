@@ -151,7 +151,19 @@ else <paper>{$x}</paper>')
 FROM AdminDocs
 where id=6
 
+/*While conditionally adding wrapper, Inserting the data directly to the custom wrappers.*/
+SELECT xDoc.query('for $prod in //product 
+let $x:=$prod/number
+return if ($x>500) 
+then <book>{data($x)}</book>
+else <paper>{data($x)}</paper>')
+FROM AdminDocs
+where id=6
 
+/*Filter using SQL where clause, from XML data | with exist function */
+SELECT id 
+FROM AdminDocs
+WHERE xDoc.exist ('/doc[@id = 123]') = 1
 
 
 
