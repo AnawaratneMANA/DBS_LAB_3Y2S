@@ -165,6 +165,11 @@ SELECT id
 FROM AdminDocs
 WHERE xDoc.exist ('/doc[@id = 123]') = 1
 
+/* Nested search into the XML file and extract the value not the section */
+SELECT xDoc.value('(/doc//section[@num = 3]/title)[1]', 'varchar(100)')
+FROM AdminDocs
+
+
 
 
 
