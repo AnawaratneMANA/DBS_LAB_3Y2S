@@ -68,8 +68,17 @@ SELECT id, xDoc.query('//product[@dept="WMN"]')
 FROM AdminDocs
 
 /* Alternative method of searching the section using child method.*/
+/* Path should be defined to the exact level with wild card method*/
 SELECT id, xDoc.query('/*/child::product[attribute::dept="WMN"]') 
 FROM AdminDocs
+
+/* Similar and alternative query to filter data.*/
+/* No need to be at the exact level to retrive the data*/
+SELECT id, xDoc.query('descendant-or-self::name[attribute::language="en"]') 
+FROM AdminDocs
+
+
+
 
 
 
