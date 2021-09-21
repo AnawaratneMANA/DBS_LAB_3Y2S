@@ -77,6 +77,16 @@ FROM AdminDocs
 SELECT id, xDoc.query('descendant-or-self::name[attribute::language="en"]') 
 FROM AdminDocs
 
+/* Filter parent section using the attributes in the child section*/
+SELECT id, xDoc.query('//product[number < 500]') 
+FROM AdminDocs
+where id=6
+
+/* Alternative Filtering Query using the gt/lt/le/ge methods */
+SELECT id, xDoc.query('//product/number[. le 500]') 
+FROM AdminDocs
+where id=6
+
 
 
 
