@@ -195,8 +195,10 @@ BEGIN
     SET p.qty = p.qty + 100;
 
     IF SQL%NOTFOUND THEN 
-        DBMS_OUTPUT.PUT_LINE()
+        DBMS_OUTPUT.PUT_LINE("Execute Statement 1")
     ELSIF SQL%FOUND THEN
+        var rows := SQL%ROWCOUNT;
+        DBMS_OUTPUT.PUT_LINE("Execute Statement 2 | Updated Row Count - " || rows)
     END IF;
 END;
 /
