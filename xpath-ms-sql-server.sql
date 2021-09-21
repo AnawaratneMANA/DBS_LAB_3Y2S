@@ -87,6 +87,18 @@ SELECT id, xDoc.query('//product/number[. le 500]')
 FROM AdminDocs
 where id=6
 
+/* Array Like indexing with XML files using []*/
+SELECT id, xDoc.query('/catalog/product[4]') 
+FROM AdminDocs
+where id=6
+
+/* Checking multiple filtering condition mentioned above.*/
+/* Check both the conditions and print out the one that satisfy the combination*/
+SELECT id, xDoc.query('//product[number > 500][@dept="ACC"]')
+FROM AdminDocs
+where id=6
+
+/* */
 
 
 
