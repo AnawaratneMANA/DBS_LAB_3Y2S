@@ -31,3 +31,18 @@ INSERT INTO AdminDocs VALUES (2,
         <section num="4"><title>Features</title></section>
     </sections>
 </doc>')
+
+/* Select the whole table */
+SELECT * FROM AdminDocs;
+
+/* Using Query() method | filter sections */
+SELECT id, xDoc.query('/catalog')
+FROM AdminDocs
+
+/* Filter nested sections using Query() method */
+SELECT id, xDoc.query('/catelog/product')
+FROM AdminDocs
+
+/* ? */
+
+
