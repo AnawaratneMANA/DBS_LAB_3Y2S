@@ -118,6 +118,13 @@ return $x')
 FROM AdminDocs
 where id=6
 
+/* Wrap the output in our own HTML/XML tag. */
+SELECT xDoc.query('for $prod in //product 
+let $x:=$prod/number
+where $x>500
+return (<Item>{$x}</Item>)')
+FROM AdminDocs
+where id=6
 
 
 
