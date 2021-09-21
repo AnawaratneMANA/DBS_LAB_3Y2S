@@ -191,7 +191,7 @@ END;
 /* Example Implicit Cursor given in the Lab Sheet */
 DECLARE
 BEGIN
-    UPDATE purchase purchase
+    UPDATE purchase
     SET p.qty = p.qty + 100;
 
     IF SQL%NOTFOUND THEN 
@@ -215,3 +215,25 @@ BEGIN
     END LOOP;
 END;
 /
+
+/* Example Explicit Cusor given in the Lab Sheet */
+/* NOTE: This type of Cursors are created by the programmer, Do not get 
+create automatically | There are main 4 steps to create and use the explicit cursor*/
+/* Declaration of the Explicit Cursor */
+
+DECLARE
+    CURSOR emp_cur IS
+    SELECT * 
+    FROM emp_tab
+    WHERE salary > 5000;
+
+/* Explicit Cursor need to be opened. In the execution section BEGIN*/
+OPEN emp_cur;
+
+/* Fetching record into the Cursor In the BEGIN section*/
+FETCH cursor_name INTO variable_list;
+
+/* After closing the cursor */
+CLOSE cursor_name;
+
+/* Example usage of Explicit Cursors.*/
