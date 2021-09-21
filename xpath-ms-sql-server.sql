@@ -110,6 +110,13 @@ return $x')
 FROM AdminDocs
 where id=6
 
+/* Same thing with a loop but with a filtering with Where clause in the query*/
+SELECT xDoc.query(' for $prod in //product 
+let $x:=$prod/number
+where $x>500
+return $x')
+FROM AdminDocs
+where id=6
 
 
 
