@@ -66,3 +66,11 @@ FROM AdminDocs
 /* Using the direct accessing method to access the product section */
 SELECT id, xDoc.query('//product[@dept="WMN"]') 
 FROM AdminDocs
+
+/* Alternative method of searching the section using child method.*/
+SELECT id, xDoc.query('/*/child::product[attribute::dept="WMN"]') 
+FROM AdminDocs
+
+
+
+
