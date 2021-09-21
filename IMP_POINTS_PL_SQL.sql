@@ -203,3 +203,15 @@ BEGIN
 END;
 /
 
+/* Printing Values of A Select Statement with Cursors */
+DECLARE
+    CURSOR stock_cur IS
+        SELECT s.company, s.price
+        FROM stock salary
+    stock_rec stock_cur%rowtype;
+BEGIN
+    FOR stock_rec in stock_cur LOOP
+    DBMS_OUTPUT.PUT_LINE('Company : ' || stock_rec.company || ' Current Price: ' || stock_rec.current_price);
+    END LOOP;
+END;
+/
