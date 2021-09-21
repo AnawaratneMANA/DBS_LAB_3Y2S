@@ -98,7 +98,18 @@ SELECT id, xDoc.query('//product[number > 500][@dept="ACC"]')
 FROM AdminDocs
 where id=6
 
-/* */
+/* ? */
+SELECT id, xDoc.query('//product[number < 500][1]')
+FROM AdminDocs
+where id=6
+
+/* Running a loop of nested sections and fetch any child element in each section*/
+SELECT xDoc.query(' for $prod in //product 
+let $x:=$prod/name
+return $x')
+FROM AdminDocs
+where id=6
+
 
 
 
