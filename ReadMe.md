@@ -33,8 +33,8 @@ command to run if program contains helper info
 
 ## Authors
 
-AnawaratneMANA   
-[@email](it19086408@my.sliit.lk)
+Anawaratne M.A.N.A.   
+[IT19086408@my.sliit.lk](it19086408@my.sliit.lk)
 
 
 ## References
