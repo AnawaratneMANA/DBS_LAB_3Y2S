@@ -237,3 +237,21 @@ FETCH cursor_name INTO variable_list;
 CLOSE cursor_name;
 
 /* Example usage of Explicit Cursors.*/
+DECLARE 
+    CURSOR stock_cur IS
+        SELECT s.company, s.price
+        FROM stock salary
+    stock_rec stock_cur%rowtype;
+BEGIN
+
+    IF NOT stock_cur%ISOPEN THEN
+        OPEN stock_cur;
+    END IF
+
+    LOOP
+    FETCH stock_cur INTO stock_rec;
+    EXIT WHEN stock_cur%NOTFOUND;
+    DBMS_OUTPUT.PUT_LINE("Printing a Statement")
+   END LOOP
+END;
+/
