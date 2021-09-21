@@ -14,3 +14,10 @@ CREATE TABLE AdminDocs (
 SELECT xDoc.value('data((/doc/section[@num = 3]/title)[1]', 'nvarchar(max)')
 FROM AdminDocs
 
+/* Using modify() method add new section to the XML */
+UPDATE AdminDocs SET xDoc.modify('
+    insert
+    <section num = "2">
+        <title>Background</title>
+    </section>
+after(/doc//section[@num = 1])[1]')
