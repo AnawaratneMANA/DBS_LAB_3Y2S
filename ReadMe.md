@@ -16,20 +16,13 @@ Basic Syntax of XML manipulation in SQL Server
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* SQL Server Installation and Configuration - https://www.youtube.com/watch?v=SOsZvmTsnbw
+
 
 ### Executing program
 
 * Download SQL Server - https://www.microsoft.com/en-us/sql-server/sql-server-downloads
 
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
 
 ## Authors
 
