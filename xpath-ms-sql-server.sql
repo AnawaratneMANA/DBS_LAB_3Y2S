@@ -126,6 +126,33 @@ return (<Item>{$x}</Item>)')
 FROM AdminDocs
 where id=6
 
+/* Applying a filtering condition to the section array */
+SELECT xDoc.query(' for $prod in //product[number > 500] 
+let $x:=$prod/number
+where $x>500
+return (<Item>{$x}</Item>)')
+FROM AdminDocs
+where id=6
+
+/* Same thing but without wrapping packing the data into the custom defined tag.*/
+SELECT xDoc.query('for $prod in //product 
+let $x:=$prod/number
+where $x>500
+return (<Item>{data($x)}</Item>)')
+FROM AdminDocs
+where id=6
+
+/* Conditionally add the wrapper tag to the filtered items , Two or more items*/              
+SELECT xDoc.query('for $prod in //product 
+let $x:=$prod/number
+return if ($x>500) 
+then <book>{$x}</book>
+else <paper>{$x}</paper>')
+FROM AdminDocs
+where id=6
+
+
+
 
 
 
