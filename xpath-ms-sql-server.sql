@@ -58,3 +58,11 @@ FROM AdminDocs
 */
 SELECT id, xDoc.query('/*/product')
 FROM AdminDocs
+
+/* Searching the XML file using @ attribute */
+/* Using the wild card method to navigate to the product */
+SELECT id, xDoc.query('/*/product[@dept="WMN"]') 
+FROM AdminDocs
+/* Using the direct accessing method to access the product section */
+SELECT id, xDoc.query('//product[@dept="WMN"]') 
+FROM AdminDocs
