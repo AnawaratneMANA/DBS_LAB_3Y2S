@@ -177,6 +177,9 @@ CREATE TYPE MenuType AS OBJECT (
 /
 
 -- DEFINE THE BODY OF THE METHOD.
+/* SELF means THIS in Java */
+/* No need to add parameters for those variables that are within the
+Object, IMP#2 If we don't have parameters then don't put empty paranthesis () */
 CREATE TYPE BODY MenuType AS 
 MEMBER FUNCTION 
 priceInYen(rate FLOAT) 
@@ -194,6 +197,14 @@ CREATE TABLE Sells OF MenuType;
 ALTER TYPE MenuType 
      ADD MEMBER FUNCTION priceInUSD(rate FLOAT)
      RETURN FLOAT CASCADE;	
+
+-- ONCE ADDED ALL THE DATA INTO THE TABLE
+/* How to call the member method with select query */
+/* IMP#2 When calling the method regardless of whether it has
+Parameters or not we have to add the ()  */
+SELECT s.ename, s.priceInYen(12.99)
+FROM Sells s
+
 
 -- ENTIRE FUNCTION SHOULD BE REWRITE WITH THE NEW FUNCTION INTANCT.
 CREATE OR REPLACE TYPE BODY MenuType AS 
