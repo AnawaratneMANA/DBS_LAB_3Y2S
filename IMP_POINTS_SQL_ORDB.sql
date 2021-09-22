@@ -165,6 +165,8 @@ UPDATE employees e
 
 -- LECTURE PART II METHODS AND INHERITANCE.
 -- FIRST ADD THE METHOD DECLARATION.
+/* rate IN means Input Parameter, It can be IN OUT INOUT, 
+Function return a FLOAT value. */
 CREATE TYPE MenuType AS OBJECT ( 
    bar REF BarType, 
    beer REF BeerType, 
