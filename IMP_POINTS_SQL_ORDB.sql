@@ -194,6 +194,8 @@ END;
 CREATE TABLE Sells OF MenuType; 
 
 -- ALTERING AND ADDING A NEW FUNCTION
+/* When applying changers to the types we have to add CASCADE keyword to 
+the end to apply changers to all the object which are using the type.*/
 ALTER TYPE MenuType 
      ADD MEMBER FUNCTION priceInUSD(rate FLOAT)
      RETURN FLOAT CASCADE;	
@@ -207,6 +209,7 @@ FROM Sells s
 
 
 -- ENTIRE FUNCTION SHOULD BE REWRITE WITH THE NEW FUNCTION INTANCT.
+/* First function should be there when replacing the function */
 CREATE OR REPLACE TYPE BODY MenuType AS 
 MEMBER FUNCTION 
 priceInYen(rate FLOAT) 
@@ -224,11 +227,14 @@ END;
 /
 
 -- MAP METHOD FOR OBJECT COMPARISON. (PARAMETERLESS)
+/* MAP MEMBER FUNCTION, These are much faster compare to ORDER MEMBER FUNCTIONS
+ Becase they do the comparison with scaler values.*/
 CREATE TYPE Rectangle_type AS OBJECT 
 ( length NUMBER, 
    width NUMBER, 
   MAP MEMBER FUNCTION area RETURN NUMBER
 ); 
+-- DEFINING THE BODY OF THE MAP METHOD.
 CREATE TYPE BODY Rectangle_type AS MAP MEMBER FUNCTION area RETURN NUMBER IS 
 	BEGIN 
 		RETURN length * width; 
