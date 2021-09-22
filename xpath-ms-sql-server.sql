@@ -169,6 +169,23 @@ WHERE xDoc.exist ('/doc[@id = 123]') = 1
 SELECT xDoc.value('(/doc//section[@num = 3]/title)[1]', 'varchar(100)')
 FROM AdminDocs
 
+/* Normal Query with where clause */
+select * from AdminDocs where id=2
+
+/* Removing and Inserting sections from the XML file*/
+/* Inserting a section */
+UPDATE AdminDocs SET xDoc.modify('
+ insert 
+ <section num="2"> 
+ <title>Background</title>
+ </section>
+ after (/doc//section[@num=1])[1]')
+
+/* Removing a section */
+UPDATE AdminDocs SET xDoc.modify('
+ delete 
+ //section[@num="2"]')
+
 
 
 
