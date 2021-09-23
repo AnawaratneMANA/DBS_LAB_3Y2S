@@ -35,3 +35,13 @@ BEGIN
 END;
 /
 
+/* In PL SQL <> means, NOT EQUAL TO Similar to that in != Java */
+DECLARE 
+    a number(1):= 2;
+     b number(1) :=1;
+BEGIN
+    IF a <> b THEN
+    dbms_output.put_line('Printed');
+    END IF;
+END;
+/
