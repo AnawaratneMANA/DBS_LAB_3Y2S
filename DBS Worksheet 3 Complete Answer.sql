@@ -73,7 +73,25 @@ ADD SCOPE FOR (companyName) IS stock
 INSERT INTO stock VALUES 
 (stock_type('BHP', 10.50, exchanges_varray('Sydney', 'NewYork'), 1.50, 3.20))
 /
+INSERT INTO stock VALUES 
+(stock_type('GM', 50.00, exchanges_varray('NewYork'), 2.50, 9.30))
+/
+INSERT INTO stock VALUES 
+(stock_type('INFORSYS', 45.00, exchanges_varray('NewYork'), 3.00, 7.80))/
 
+INSERT INTO stock VALUES 
+(stock_type('FORD', 40.00, exchanges_varray('NewYork'), 2.00, 8.50))/
+
+INSERT INTO stock VALUES 
+(stock_type('INTEL', 76.50, exchanges_varray('NewYork','London'), 5.00, 12.40))/
+
+INSERT INTO stock VALUES 
+(stock_type('IBM', 70.00, exchanges_varray('NewYork','London','Tokyo'), 4.25, 10.25))/
+
+
+/**
+    IMP#2: We have to insert data into the nested table object first.
+**/
 -- INSERT DATA INTO THE CLIENT TABLE
 INSERT INTO clients VALUES 
 (client_type('John Smith', address_type('3', 'East Av', 'Bentley', 'WA', '6102'),
@@ -84,3 +102,40 @@ investment_nestedtbl_type(investment_type('BHP', 12.00, '02-10-01', 1000)))
 -- AFTER EXECUTING THE QUERIES WE HAVE TO RUN COMMIT TO SAVE THE CHANGERS.
 COMMIT
 /
+
+-- SELECT QUERIES
+/**
+Keyword for brake the nesting in tables "table"
+**/
+
+-- Part A
+SELECT c.name, i.company.companyName, i.company.currentPrice, i.company.lastDivident, i.company.eps
+FROM clients c, table(c.investment) i
+
+-- Part B
+SELECT c.name, i.company.companyName, SUM(i.quantity) AS total_qty, SUM(i.quantity*i.purchasePrice)/ SUM(i.quantity) AS APP
+FROM client c, table(c.investment) i
+GROUP BY c.name, i.company.companyName
+
+/**
+Nesting into multiple level in the table.
+**/
+-- Part C
+SELECT c.name, i.company.companyName, SUM(i.quantity) AS total_qty , SUM(i.quantity*i.currentPrice) AS current_value
+FROM client c, table(c.investment) i, table(i.company.exchanges) e
+WHERE e.column_value = "New York"
+GROUP BY c.name, i.company.companyName
+
+/**
+Do the next two questions as an assignment.
+**/
+
+-- Part D
+SELECT c.name, SUM(i.quantity*i.purchasePrice) AS total_price
+FROM client c, table(c.investments) i
+GROUP BY c.name
+
+-- Part E
+SELECT c.name, SUM(i.quantity(i.company.currentPrice - i.purchasePrice)) AS book_profit
+FROM client c, table(c.investments) i
+GROUP BY c.name
